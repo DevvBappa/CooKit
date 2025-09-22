@@ -9,7 +9,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ showAuthButtons = true, showNavigation = true, minimal = false }) => {
   return (
-    <header className={`${minimal ? 'bg-transparent' : 'bg-white shadow-sm border-b border-gray-200'}`}>
+    <header className={`${minimal ? 'bg-transparent' : 'bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-800'} transition-colors duration-300`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -22,13 +22,13 @@ const Header: React.FC<HeaderProps> = ({ showAuthButtons = true, showNavigation 
           {/* Navigation */}
           {showNavigation && (
             <nav className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-700 hover:text-orange-500 transition-colors">
+              <Link href="/" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors">
                 Home
               </Link>
-              <Link href="/recipes" className="text-gray-700 hover:text-orange-500 transition-colors">
+              <Link href="/recipes" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors">
                 Recipes
               </Link>
-              <Link href="/about" className="text-gray-700 hover:text-orange-500 transition-colors">
+              <Link href="/about" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors">
                 About
               </Link>
             </nav>
@@ -39,7 +39,7 @@ const Header: React.FC<HeaderProps> = ({ showAuthButtons = true, showNavigation 
             <div className="flex items-center space-x-4">
               <Link 
                 href="/login" 
-                className="text-gray-700 hover:text-orange-500 transition-colors"
+                className="text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors"
               >
                 Login
               </Link>

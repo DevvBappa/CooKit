@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 interface FormData {
   email: string;
@@ -92,30 +93,32 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        {/* Logo/Brand */}
-        <div className="text-center">
-          <Link href="/" className="inline-block">
-            <div className="text-6xl font-bold text-orange-500 mb-8">
-              🍳 CooKit
-            </div>
-          </Link>
-        </div>
-        
-        <div className="bg-white py-8 px-6 shadow-lg rounded-lg">
-          <div className="text-center mb-6">
-            <h2 className="text-3xl font-bold text-gray-900">
-              Welcome back!
-            </h2>
-            <p className="mt-2 text-sm text-gray-600">
-              Sign in to your CooKit account
-            </p>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col justify-center transition-colors duration-300">
+      <ThemeToggle />
+      <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="max-w-md w-full space-y-8">
+          {/* Logo/Brand */}
+          <div className="text-center">
+            <Link href="/" className="inline-block">
+              <div className="text-6xl font-bold text-orange-500 mb-8">
+                🍳 CooKit
+              </div>
+            </Link>
           </div>
           
-          <form className="space-y-6" onSubmit={handleSubmit}>
+          <div className="bg-white dark:bg-gray-800 py-8 px-6 shadow-lg rounded-lg transition-colors duration-300">
+            <div className="text-center mb-6">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                Welcome back!
+              </h2>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                Sign in to your CooKit account
+              </p>
+            </div>
+            
+            <form className="space-y-6" onSubmit={handleSubmit}>
               {errors.general && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-lg">
                   {errors.general}
                 </div>
               )}
@@ -150,9 +153,9 @@ const LoginPage: React.FC = () => {
                     id="remember-me"
                     name="remember-me"
                     type="checkbox"
-                    className="h-4 w-4 text-orange-500 focus:ring-orange-500 border-gray-300 rounded"
+                    className="h-4 w-4 text-orange-500 focus:ring-orange-500 border-gray-300 dark:border-gray-600 rounded dark:bg-gray-700"
                   />
-                  <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
+                  <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700 dark:text-gray-300">
                     Remember me
                   </label>
                 </div>
@@ -177,7 +180,7 @@ const LoginPage: React.FC = () => {
             </form>
             
             <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Don't have an account?{' '}
                 <Link
                   href="/register"
@@ -189,6 +192,8 @@ const LoginPage: React.FC = () => {
             </div>
           </div>
         </div>
+      </div>
+      <ThemeToggle />
     </div>
   );
 };

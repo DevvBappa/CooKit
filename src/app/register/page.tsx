@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 interface FormData {
   firstName: string;
@@ -128,7 +129,7 @@ const RegisterPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         {/* Logo/Brand */}
         <div className="text-center">
@@ -139,130 +140,130 @@ const RegisterPage: React.FC = () => {
           </Link>
         </div>
         
-        
-        <div className="bg-white py-8 px-6 shadow-lg rounded-lg">
+        <div className="bg-white dark:bg-gray-800 py-8 px-6 shadow-lg rounded-lg border border-gray-200 dark:border-gray-700">
           <div className="text-center mb-6">
-            <h2 className="text-3xl font-bold text-gray-900">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
               Join CooKit
             </h2>
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               Create your account and start cooking!
             </p>
           </div>
           
           <form className="space-y-6" onSubmit={handleSubmit}>
             {errors.general && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-lg">
                 {errors.general}
               </div>
             )}
             
             <div className="grid grid-cols-2 gap-4">
-                <Input
-                  id="firstName"
-                  name="firstName"
-                  type="text"
-                  label="First Name"
-                  placeholder="John"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  error={errors.firstName}
-                  required
-                />
-                
-                <Input
-                  id="lastName"
-                  name="lastName"
-                  type="text"
-                  label="Last Name"
-                  placeholder="Doe"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  error={errors.lastName}
-                  required
-                />
-              </div>
-              
               <Input
-                id="email"
-                name="email"
-                type="email"
-                label="Email Address"
-                placeholder="john.doe@example.com"
-                value={formData.email}
+                id="firstName"
+                name="firstName"
+                type="text"
+                label="First Name"
+                placeholder="John"
+                value={formData.firstName}
                 onChange={handleChange}
-                error={errors.email}
+                error={errors.firstName}
                 required
               />
               
               <Input
-                id="password"
-                name="password"
-                type="password"
-                label="Password"
-                placeholder="Create a strong password"
-                value={formData.password}
+                id="lastName"
+                name="lastName"
+                type="text"
+                label="Last Name"
+                placeholder="Doe"
+                value={formData.lastName}
                 onChange={handleChange}
-                error={errors.password}
+                error={errors.lastName}
                 required
               />
-              
-              <Input
-                id="confirmPassword"
-                name="confirmPassword"
-                type="password"
-                label="Confirm Password"
-                placeholder="Confirm your password"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                error={errors.confirmPassword}
-                required
-              />
-              
-              <div className="flex items-center">
-                <input
-                  id="terms"
-                  name="terms"
-                  type="checkbox"
-                  required
-                  className="h-4 w-4 text-orange-500 focus:ring-orange-500 border-gray-300 rounded"
-                />
-                <label htmlFor="terms" className="ml-2 block text-sm text-gray-700">
-                  I agree to the{' '}
-                  <Link href="/terms" className="text-orange-500 hover:text-orange-600">
-                    Terms of Service
-                  </Link>{' '}
-                  and{' '}
-                  <Link href="/privacy" className="text-orange-500 hover:text-orange-600">
-                    Privacy Policy
-                  </Link>
-                </label>
-              </div>
-              
-              <Button
-                type="submit"
-                variant="primary"
-                size="lg"
-                disabled={isLoading}
-                className="w-full"
-              >
-                {isLoading ? 'Creating Account...' : 'Create Account'}
-              </Button>
-            </form>
-            
-            <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
-                Already have an account?{' '}
-                <Link
-                  href="/login"
-                  className="font-medium text-orange-500 hover:text-orange-600 transition-colors"
-                >
-                  Sign in here
-                </Link>
-              </p>
             </div>
+            
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              label="Email Address"
+              placeholder="john.doe@example.com"
+              value={formData.email}
+              onChange={handleChange}
+              error={errors.email}
+              required
+            />
+            
+            <Input
+              id="password"
+              name="password"
+              type="password"
+              label="Password"
+              placeholder="Create a strong password"
+              value={formData.password}
+              onChange={handleChange}
+              error={errors.password}
+              required
+            />
+            
+            <Input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              label="Confirm Password"
+              placeholder="Confirm your password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              error={errors.confirmPassword}
+              required
+            />
+            
+            <div className="flex items-center">
+              <input
+                id="terms"
+                name="terms"
+                type="checkbox"
+                required
+                className="h-4 w-4 text-orange-500 focus:ring-orange-500 border-gray-300 dark:border-gray-600 rounded dark:bg-gray-700"
+              />
+              <label htmlFor="terms" className="ml-2 block text-sm text-gray-700 dark:text-gray-300">
+                I agree to the{' '}
+                <Link href="/terms" className="text-orange-500 hover:text-orange-600">
+                  Terms of Service
+                </Link>{' '}
+                and{' '}
+                <Link href="/privacy" className="text-orange-500 hover:text-orange-600">
+                  Privacy Policy
+                </Link>
+              </label>
+            </div>
+            
+            <Button
+              type="submit"
+              variant="primary"
+              size="lg"
+              disabled={isLoading}
+              className="w-full"
+            >
+              {isLoading ? 'Creating Account...' : 'Create Account'}
+            </Button>
+          </form>
+          
+          <div className="mt-6 text-center">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Already have an account?{' '}
+              <Link
+                href="/login"
+                className="font-medium text-orange-500 hover:text-orange-600 transition-colors"
+              >
+                Sign in here
+              </Link>
+            </p>
           </div>
         </div>
+      </div>
+      <ThemeToggle />
     </div>
   );
 };
